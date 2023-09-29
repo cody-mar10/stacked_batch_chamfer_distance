@@ -14,7 +14,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
 ]
-dependencies = ["torch>=2", "torch_geometric", "einops"]
+dependencies = ["torch>=2", "torch_geometric", "einops", "ninja"]
 
 [project.urls]
 "Homepage" = "https://github.com/cody-mar10/stacked_batch_chamfer_distance"
