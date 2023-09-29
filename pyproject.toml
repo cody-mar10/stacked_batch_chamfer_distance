@@ -20,6 +20,12 @@ dependencies = ["torch>=2", "torch_geometric", "einops"]
 "Homepage" = "https://github.com/cody-mar10/stacked_batch_chamfer_distance"
 "Bug Tracker" = "https://github.com/cody-mar10/stacked_batch_chamfer_distance/issues"
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sbcd = ["*.cpp", "*.cu", "*.h"]
+
 [tool.ruff]
 src = ["src"]
 line-length = 90
