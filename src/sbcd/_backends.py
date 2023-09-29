@@ -1,12 +1,15 @@
+from pathlib import Path
 from typing import Callable, Tuple
 
 import torch
 from torch.utils.cpp_extension import load
 from torch_scatter import segment_mean_csr, segment_min_csr
 
+_srcdir = Path(__file__).parent
+
 _stacked_batch_chamfer_distance_cpu = load(
     name="stacked_batch_chamfer_distance_cpu",
-    sources=["_C/sbcd.cpp"],
+    sources=[_srcdir.joinpath("_C/sbcd.cpp").as_posix()],
     verbose=True,
     extra_cflags=["-O2"],
 )
@@ -14,7 +17,10 @@ _stacked_batch_chamfer_distance_cpu = load(
 if torch.cuda.is_available():
     _stacked_batch_chamfer_distance_cuda = load(
         name="stacked_batch_chamfer_distance_cuda",
-        sources=["_C/sbcd_cuda.cpp", "_C/sbcd_cuda.cu"],
+        sources=[
+            _srcdir.joinpath("_C/sbcd_cuda.cpp").as_posix(),
+            _srcdir.joinpath("_C/sbcd_cuda.cu").as_posix(),
+        ],
         verbose=True,
         extra_cflags=["-O2"],
     )
