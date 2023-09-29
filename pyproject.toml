@@ -24,7 +24,7 @@ dependencies = ["torch>=2", "torch_geometric", "einops"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-sbcd = ["*.cpp", "*.cu", "*.h"]
+sbcd = ["_C/*.cpp", "_C/*.cu", "_C/*.h"]
 
 [tool.ruff]
 src = ["src"]
